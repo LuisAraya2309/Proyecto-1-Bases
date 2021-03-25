@@ -1,7 +1,7 @@
 USE [PlanillaObrera]
 GO
 
-/****** Object:  Table [dbo].[TipoDocIdentidad]    Script Date: 25/03/2021 16:10:00 ******/
+/****** Object:  Table [dbo].[TipoDocIdentidad]    Script Date: 25/03/2021 04:44:31 p. m. ******/
 SET ANSI_NULLS ON
 GO
 

@@ -1,7 +1,7 @@
 USE [PlanillaObrera]
 GO
 
-/****** Object:  Table [dbo].[Empleado]    Script Date: 25/03/2021 16:09:28 ******/
+/****** Object:  Table [dbo].[Empleado]    Script Date: 25/03/2021 04:44:01 p. m. ******/
 SET ANSI_NULLS ON
 GO
 
