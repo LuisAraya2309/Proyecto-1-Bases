@@ -1,17 +1,10 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package modelo;
 
 import javax.inject.Named;
 import javax.enterprise.context.ApplicationScoped;
 
-/**
- *
- * @author luist
- */
+
 @Named(value = "login")
 @ApplicationScoped
 public class login {
@@ -43,7 +36,6 @@ public class login {
     //Verificar Contraseña
     public boolean verificarLogin(){
         //verifica si el user y el password son correctos
-        System.out.println("verificando");
         return (this.user.equals("admin"))&&(this.password.equals("admin")); 
     }
 

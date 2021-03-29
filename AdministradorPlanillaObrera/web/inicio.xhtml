@@ -18,7 +18,7 @@
                            required="true"
                            requiredMessage="Error: Introduzca la contraseña"/>
            
-                <h:commandButton id = "submit" value="Login" />
+                <h:commandButton id = "submit" value="Login" action="#{login.verificarLogin()}"/>
                 <h:commandButton id = "reset" value="Limpiar" type="reset"/>
             </h:panelGrid>
         </h:form>
