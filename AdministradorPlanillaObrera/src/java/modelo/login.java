@@ -36,7 +36,7 @@ public class login {
     //Verificar Contraseña
     public boolean verificarLogin(){
         //verifica si el user y el password son correctos
-        return (this.user.equals("admin"))&&(this.password.equals("admin")); 
+        return (this.user.equals("sa"))&&(this.password.equals("admin")); 
     }
 
     
