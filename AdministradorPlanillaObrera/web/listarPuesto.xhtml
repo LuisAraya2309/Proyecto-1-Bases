@@ -13,12 +13,8 @@
         <div class="card">
             <h:form>
                 <div class="p-col-12 p-md-6 p-lg-4 p-xl-3">
-                    <p:selectOneListbox id="basic" value="#{selectOneView.option}">
-                        <f:selectItem itemLabel="New York" itemValue="New York"/>
-                        <f:selectItem itemLabel="Rome" itemValue="Rome"/>
-                        <f:selectItem itemLabel="London" itemValue="London"/>
-                        <f:selectItem itemLabel="Istanbul" itemValue="Istanbul"/>
-                        <f:selectItem itemLabel="Paris" itemValue="Paris"/>
+                    <p:selectOneListbox id="basic" value="#{puestos.option}">
+                        <f:selectItem itemLabel="#{puestos.listaPuestos}" itemValue="1"/>
                     </p:selectOneListbox>
                 </div>
                 <h:panelGrid columns="1">
