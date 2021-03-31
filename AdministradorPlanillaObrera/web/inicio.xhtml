@@ -4,22 +4,23 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html">
     <h:head>
         <title>Administrador Planilla Obrera</title>
+        <link href = "styleLogin.css" type = "text/css"  rel = "stylesheet" /> 
     </h:head>
     <h:body>
         <h:form>
             <h2>Inicio de sesión del administrador de la base de datos</h2>
             <h:panelGrid>
-                <h:outputLabel value="Usuario: " style="font-weight:bold" />
+                <Etiquetas> Usuario:  </Etiquetas>
                 <h:inputText value="#{login.user}"
                            required="true"
-                           requiredMessage="Error: Introduzca el nombre de usuario"/>    
-                <h:outputLabel value="Contraseña: " style="font-weight:bold" />
+                           requiredMessage="Error: Introduzca el nombre de usuario " />    
+                <Etiquetas> Contraseña: </Etiquetas>
                 <h:inputSecret value="#{login.password}"
                            required="true"
                            requiredMessage="Error: Introduzca la contraseña"/>
            
-                <h:commandButton id = "submit" value="Login" action="#{login.verificarLogin()}"/>
-                <h:commandButton id = "reset" value="Limpiar" type="reset"/>
+                <h:commandButton id = "submit" value="Ingresar" action="#{login.verificarLogin()}" style= "background-color:bisque ; font-size:20px"/>
+                <h:commandButton id = "reset" value="Limpiar" type="reset" style= "background-color:bisque ; font-size:20px"/>
             </h:panelGrid>
         </h:form>
     </h:body>
