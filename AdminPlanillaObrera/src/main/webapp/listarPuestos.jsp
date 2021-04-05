@@ -16,7 +16,8 @@
     </head>
     <body>
         <h1>Puestos: </h1>
-        <select name="puesto" id="puesto" required="">
+        <form action="puestoEditadoSeleccionado.jsp">
+            <select name="puesto" id="puesto">
            <%
             try{ 
 
@@ -35,13 +36,15 @@
                }
 
             }catch(SQLException ex){
-                System.out.println("EXCEPTION SQL");
-                System.out.println(ex);
-
+               
             } 
             %>
         </select>
-        
-        
+        <h2>Si desea editar el puesto, seleccione e ingrese los nuevos datos para editarlo: </h2>
+        Nuevo nombre: <input type="text" name="nuevoNombre" required=""> <br/><br/>
+        Nuevo salario: <input type="text" name="nuevoSalario" required=""> <br/><br/>
+        <input type="submit" name="editar" id="editar" value="Editar">
+        </form>
+        <a href='central.html'>Regresar a la central</a>
     </body>
 </html>
