@@ -1,62 +1,59 @@
 
 package modelo;
 
-
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
+//import java.sql.SQLException;
+import java.io.Serializable;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
+//import javax.annotation.PostConstruct;
 import javax.inject.Named;
-import javax.enterprise.context.ApplicationScoped;
+import javax.faces.view.ViewScoped;
 
 
 @Named(value = "puestos")
-@ApplicationScoped
-public class Puestos {
+@ViewScoped
+public class Puestos implements Serializable{
 
-  
-    
-    private List<String> listaPuestos = getListaPuestos();
-    private String option;
-    
-    public List<String> getListaPuestos() {
-        System.out.println("HOLAAAAAAAAAAAAAAAAAA");
-        try{
-            String conexionUrl = "jdbc:sqlserver://localhost:1433;databaseName=PlanillaObrera;user=sa;password=admin";
-            Connection conexion =  DriverManager.getConnection(conexionUrl);
-            System.out.println("Paso la conexion");
-            String callSP = "EXECUTE <sp_ListarPuestos>";
-            PreparedStatement ps = conexion.prepareStatement(callSP);
-            ResultSet dataset = ps.executeQuery();
-            List<String> puestosConvertidos = new ArrayList<>();
-            while(dataset.next()){
-               puestosConvertidos.add(dataset.getString("Nombre"));
-            }
+ private List<String> listaPuestos;
+ private String paisSeleccionado;   
 
-            this.listaPuestos = puestosConvertidos;
-            System.out.println("ARRIBA ESPAÑA");
-        }catch(SQLException ex){
-            System.out.println("EXCEPTION SQL JAJAJ AQUI");
+    
+    
+    
+    //@PostConstruct
+    /*
+    public void init(){
+        try {
+            listaPuestos = ServicioPuestos.obtenerPuestos();
+            System.out.println("lets gooooo");
+        } catch (SQLException ex) {
             System.out.println(ex);
         }
         
+    }
+    */
+    
+    public List<String> getListaPuestos() {
         return listaPuestos;
     }
-    
-    
-    public String getOption() {
-        return option;
+
+
+    public String getPaisSeleccionado() {
+        return paisSeleccionado;
     }
 
- 
-    public void setOption(String option) {
-        this.option = option;
+  
+    public void setPaisSeleccionado(String paisSeleccionado) {
+        this.paisSeleccionado = paisSeleccionado;
     }
+
     
     public Puestos() {
+     try {
+         this.listaPuestos = ServicioPuestos.obtenerPuestos();
+     } catch (SQLException ex) {
+         System.out.println(ex);
+     }
     }
     
 }
