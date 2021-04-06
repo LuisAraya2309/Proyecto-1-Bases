@@ -1,53 +1,49 @@
+<%-- 
+    Document   : puestoAIngresar
+    Created on : 5 abr. 2021, 15:27:59
+    Author     : luist
+--%>
 
-
-<%@page import="validaciones.validacionesSQL"%>
 <%@page import="java.sql.SQLException"%>
-<%@page import="java.util.List"%>
-<%@page import="java.util.ArrayList"%>
-<%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.PreparedStatement"%>
 <%@page import="java.sql.Connection"%>
 <%@page import="conexion.conexionBD"%>
-<%@page import="conexion.conexionBD"%>
+<%@page import="validaciones.validacionesSQL"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Puesto Editado</title>
+        <title>Puesto Ingresado</title>
     </head>
     <body>
         <%
-            String puestoAEditar = request.getParameter("puesto");
             String nuevoNombre = request.getParameter("nuevoNombre");
             int nuevoSalario = Integer.parseInt((request.getParameter("nuevoSalario")));
-            if((nuevoNombre.length()<40)&&(!validacionesSQL.existePuesto(puestoAEditar))){
+            if((nuevoNombre.length()<40)&&(!validacionesSQL.existePuesto(nuevoNombre))){
                 try{ 
                     conexionBD conection = new conexionBD();
                     Connection conexion = conection.getConexion();
-                    String callSP = "EXECUTE sp_EditarPuesto ?,?,?";
+                    String callSP = "EXECUTE sp_InsertarPuesto ?,?";
                     PreparedStatement ps = conexion.prepareStatement(callSP);
-                    ps.setString(1,puestoAEditar);
-                    ps.setString(2,nuevoNombre);
-                    ps.setInt(3,nuevoSalario);
+                    ps.setString(1,nuevoNombre);
+                    ps.setInt(2,nuevoSalario);
                     ps.executeQuery();
-                    
-
                 }catch(SQLException ex){
-                    
+                    System.out.println(ex);
 
                 }
-                out.println("<h1>Puesto editado con éxito</h1>");
+                out.println("<h1>Puesto ingresado con éxito</h1>");
                 out.println("<a href='central.html'>Regresar a la central</a>");
+                out.println("<a href='ingresarPuestos.html'>Regresar a la inserción de puestos</a>");
             }
             else{
-            out.println("<h1>Nombre invalido, debe de tener menos de 40 caracteres y no puede estar repetido</h1>");
-            out.println("<a href='listarPuestos.jsp'>Regresar al listado de puestos</a>");
+            out.println("<h1>Nombre invalido, debe de tener menos de 40 caracteres y debe ser un nuevo puesto</h1>");
+            out.println("<a href='ingresarPuestos.jsp'>Regresar a la inserción de puestos</a>");
             
             }
             
             
         %>
-        
     </body>
 </html>
