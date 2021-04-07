@@ -1,4 +1,4 @@
-
+USE [PlanillaObrera]
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -9,11 +9,15 @@ CREATE PROCEDURE sp_ListarEmpleados
 AS
 BEGIN
 
-	SELECT Nombre FROM Empleado 
-	ORDER BY Nombre
-
+	SELECT Empleado.Nombre, Puesto.Nombre
+	FROM Empleado INNER JOIN Puesto
+	ON  Empleado.IdPuesto =  Puesto.Id
+	ORDER BY Empleado.Nombre;
 END
 GO
+
+USE [PlanillaObrera]
+EXECUTE sp_ListarEmpleados 
 
 
 
