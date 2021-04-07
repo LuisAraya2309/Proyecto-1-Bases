@@ -17,7 +17,7 @@
             String puestoAEditar = request.getParameter("puestoEditar");
             String nuevoNombre = request.getParameter("nuevoNombre");
             int nuevoSalario = Integer.parseInt((request.getParameter("nuevoSalario")));
-            if((nuevoNombre.length()<40)&&(validacionesSQL.existePuesto(puestoAEditar))){
+            if((nuevoNombre.length()<40)&&(validacionesSQL.existePuesto(puestoAEditar))&&(!validacionesSQL.existePuesto(nuevoNombre))){
                 try{ 
                     conexionBD conection = new conexionBD();
                     Connection conexion = conection.getConexion();
@@ -36,7 +36,7 @@
                 out.println("<a href='editarPuestos.html'>Regresar</a>");
             }
             else{
-            out.println("<h1>Nombre invalido, debe de tener menos de 40 caracteres y debe existir dicho puesto</h1>");
+            out.println("<h1>Nombre invalido, debe de tener menos de 40 caracteres,debe existir dicho puesto a editar y el nuevo nombre no debe de estar repetido </h1>");
             out.println("<a href='listarPuestos.jsp'>Regresar a la edición de puestos</a>");
             
             }
