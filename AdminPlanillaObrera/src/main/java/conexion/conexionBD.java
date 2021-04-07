@@ -35,6 +35,5 @@ public class conexionBD {
               Logger.getLogger(conexionBD.class.getName()).log(Level.SEVERE, null, ex);
           }
     }
-    
-    
+        
 }
