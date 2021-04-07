@@ -16,8 +16,7 @@ BEGIN
 END
 GO
 
-USE [PlanillaObrera]
-EXECUTE sp_ListarEmpleados 
+
 
 
 
