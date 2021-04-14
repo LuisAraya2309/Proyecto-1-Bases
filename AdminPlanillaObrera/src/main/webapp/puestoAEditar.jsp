@@ -37,11 +37,9 @@
             }
             else{
             out.println("<h1>Nombre invalido, debe de tener menos de 40 caracteres,debe existir dicho puesto a editar y el nuevo nombre no debe de estar repetido </h1>");
-            out.println("<a href='listarPuestos.jsp'>Regresar a la edición de puestos</a>");
+            out.println("<a href='editarPuestos.jsp'>Regresar a la edición de puestos</a>");
             
-            }
-            
-            
+            } 
         %>
     </body>
 </html>

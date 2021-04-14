@@ -5,17 +5,18 @@ h1{
     padding: 20px;
 }
 
-Etiquetas{
-    font: oblique bold 150% cursive;
-
-}
-
 body{
     background: url(fondo.png);
     background-size: 100%;
+    font: oblique bold 200% cursive;
 }
 
 commandButton{
     font: oblique bold 200% cursive;
     background-color: bisque;
+}
+
+input{
+  border: 2px solid red;
+  border-radius: 4px;
 }

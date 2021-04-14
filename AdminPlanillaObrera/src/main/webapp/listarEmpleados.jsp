@@ -1,5 +1,6 @@
 
 
+<%@page import="java.sql.ResultSetMetaData"%>
 <%@page import="java.sql.SQLException"%>
 <%@page import="java.util.List"%>
 <%@page import="java.util.ArrayList"%>
@@ -16,7 +17,7 @@
     </head>
     <body>
         <h1>Empleados: </h1>
-        <form>
+        <form action="editarEmpleados.jsp">
             <select name="empleado" id="empleado">
            <%
             try{ 
@@ -27,18 +28,22 @@
                 ResultSet dataset = ps.executeQuery();
                 List<String> empleadosConvertidos = new ArrayList<>();
                 while(dataset.next()){
-                   empleadosConvertidos.add(dataset.getString("Nombre"));
+                    String empleadoConstruir ="";
+                    empleadoConstruir+= "Nombre: " + dataset.getString("Nombre") + " ,Puesto: " + dataset.getString(2);
+                    empleadosConvertidos.add(empleadoConstruir);
                 }
                 int size = empleadosConvertidos.size();
                 for(int i =0;i<size;i++){
-                out.println("<option>"+empleadosConvertidos.get(i)+"</option>");
+                    out.println("<option>"+empleadosConvertidos.get(i)+"</option>");
                }
-
+               
             }catch(SQLException ex){
                System.out.println(ex);
             } 
             %>
         </select>
+        
+        <input type="submit" name="editar" id="editar" value="Editar">
         </form>
         <a href='central.html'>Regresar a la central</a>
     </body>

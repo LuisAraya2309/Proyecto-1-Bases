@@ -1,5 +1,4 @@
 
-
 <%@page import="java.sql.SQLException"%>
 <%@page import="java.util.List"%>
 <%@page import="java.util.ArrayList"%>
@@ -12,37 +11,37 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Listar Puestos</title>
+        <title>Filtrar Empleados</title>
     </head>
     <body>
-        <h1>Puestos: </h1>
-        <form action="editarPuestos.jsp">
-            <select name="puesto" id="puesto">
+        <h1>Empleados: </h1>
+        <form action = "editarEmpleados">
+            <select name="empleado" id="empleado">
            <%
             try{ 
-
                 conexionBD conection = new conexionBD();
                 Connection conexion = conection.getConexion();
-                String callSP = "EXECUTE sp_ListarPuestos";
+                String filtro = request.getParameter("filtro") + "%";
+                String callSP = "EXECUTE sp_ListarEmpleadosFiltro ?";
                 PreparedStatement ps = conexion.prepareStatement(callSP);
+                ps.setString(1,filtro);
                 ResultSet dataset = ps.executeQuery();
-                List<String> puestosConvertidos = new ArrayList<>();
+                List<String> empleadosConvertidos = new ArrayList<>();
                 while(dataset.next()){
-                   String puestoCompleto ="";
-                   puestoCompleto +="Nombre: "+dataset.getString("Nombre")+" ,Salario por Hora: "+dataset.getString("SalarioXHora");
-                   puestosConvertidos.add(puestoCompleto);
+                    String empleadoConstruir ="";
+                    empleadoConstruir+= "Nombre: " + dataset.getString("Nombre") + " ,Puesto: " + dataset.getString(2);
+                    empleadosConvertidos.add(empleadoConstruir);
                 }
-                int size = puestosConvertidos.size();
+                int size = empleadosConvertidos.size();
                 for(int i =0;i<size;i++){
-                out.println("<option>"+puestosConvertidos.get(i)+"</option>");
+                    out.println("<option>"+empleadosConvertidos.get(i)+"</option>");
                }
 
             }catch(SQLException ex){
-               
+               System.out.println(ex);
             } 
             %>
         </select>
-        <input type="submit" name="editar" id="editar" value="Editar">
         </form>
         <a href='central.html'>Regresar a la central</a>
     </body>

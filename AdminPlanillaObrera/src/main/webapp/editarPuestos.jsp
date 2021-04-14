@@ -1,8 +1,3 @@
-<%-- 
-    Document   : editarPuestos
-    Created on : 5 abr. 2021, 13:40:37
-    Author     : luist
---%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -13,7 +8,17 @@
     </head>
     <body>
         <form action="puestoAEditar.jsp">
-            Puesto a editar: <input type="text" name="puestoEditar" >
+            <% String puestoSeleccionado  = request.getParameter("puesto");
+                String puestoActualizado =""; 
+                if(puestoSeleccionado!=null){
+                    String[] infoPuesto = puestoSeleccionado.split(" ");
+                    puestoActualizado = infoPuesto[1]; 
+                }
+                else{
+                puestoActualizado = "";
+                }
+            %>
+            Puesto a editar: <input type="text" name="puestoEditar" value="<%= puestoActualizado%>">
             Nuevo nombre: <input type="text" name="nuevoNombre" required=""> 
             Nuevo salario: <input type="text" name="nuevoSalario" required=""> 
             <input type="submit" name="editar" id="editar" value="Editar">

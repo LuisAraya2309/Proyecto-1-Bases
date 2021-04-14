@@ -5,8 +5,14 @@
         <title>Administrar Planilla Obrera</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href = "styleCentral.css" type = "text/css"  rel = "stylesheet" /> 
     </head>
     <body>
+        <h1>
+            Funcionalidades del Sistema
+        </h1>
+        <div>
+            
         <div>
             <form action="listarPuestos.jsp">
                 <input type="submit" name="listarPuestos" id="listarPuestos" value="Listar Puesto">
@@ -33,8 +39,8 @@
         </div>
         
         <div>
-            <form>
-                Filtrar: <input type="text" name="filtro" >
+            <form action="filtrarEmpleados.jsp">
+                Filtrar: <input type="text" name="filtro" required="">
                 <input type="submit" name="empleadosFiltro" id="empleadosFiltro" value="Listar">
             </form>
         </div>
@@ -44,7 +50,8 @@
                 <input type="submit" name="editarEmpleados" id="editarEmpleados" value="Editar Empleado">
             </form>
         </div>
-        
+            
+        </div>
     </body>
         
 </html>
