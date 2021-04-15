@@ -9,10 +9,12 @@ CREATE PROCEDURE sp_ListarEmpleados
 AS
 BEGIN
 
-	SELECT Empleado.Nombre, Puesto.Nombre
-	FROM Empleado INNER JOIN Puesto
-	ON  Empleado.IdPuesto =  Puesto.Id
-	ORDER BY Empleado.Nombre;
+	SELECT 
+		E.Nombre
+		, P.Nombre
+	FROM dbo.Empleado as E
+	INNER JOIN dbo.Puesto as P ON  E.IdPuesto =  P.Id
+	ORDER BY E.Nombre;
 END
 GO
 

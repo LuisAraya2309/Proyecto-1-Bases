@@ -10,8 +10,10 @@ AS
 
 BEGIN
 
-	UPDATE Puesto
-	SET Nombre = @nuevoNombre, SalarioXHora = @nuevoSalario
+	UPDATE dbo.Puesto
+	SET 
+		Nombre = @nuevoNombre
+		, SalarioXHora = @nuevoSalario
 	WHERE Nombre = @buscarNombre
 
 END

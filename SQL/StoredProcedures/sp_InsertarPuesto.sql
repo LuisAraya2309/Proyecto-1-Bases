@@ -11,8 +11,11 @@ AS
 
 BEGIN
 
-	INSERT INTO Puesto
-	VALUES(@nuevoNombre,@nuevoSalario)
+	INSERT INTO dbo.Puesto
+	VALUES
+		(@nuevoNombre
+		,@nuevoSalario
+		,1)
 
 END
 

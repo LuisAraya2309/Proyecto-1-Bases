@@ -9,12 +9,14 @@ SET QUOTED_IDENTIFIER ON
 GO
 
 
-CREATE PROCEDURE [dbo].[sp_ListarTipoDocIdentidad]
+CREATE PROCEDURE sp_ListarTipoDocIdentidad
 AS
 BEGIN
 
-    SELECT * FROM TipoDocIdentidad 
-    ORDER BY Nombre
+    SELECT 
+		*
+	FROM dbo.TipoDocIdentidad as T
+    ORDER BY T.Nombre
 
 END
 GO

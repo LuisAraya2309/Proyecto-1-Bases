@@ -11,13 +11,38 @@ CREATE PROCEDURE sp_EditarEmpleado @buscarNombre varchar(40), @nuevoNombre varch
 AS
 
 BEGIN
-	DECLARE @nuevoPuesto INT = (SELECT Puesto.Id FROM Puesto WHERE Puesto.Nombre = @buscarPuesto);
-	DECLARE @nuevoTipoIdentificacion INT = (SELECT TipoDocIdentidad.Id FROM TipoDocIdentidad WHERE TipoDocIdentidad.Nombre = @buscarTipoIdentificacion);
-	DECLARE @nuevoDepartamento INT = (SELECT Departamentos.Id FROM Departamentos WHERE Departamentos.Nombre = @buscarDepartamento);
+	---Realiza la busqueda del puesto segun su nombre y devuelve el valor de su id
+	DECLARE @nuevoPuesto INT = 
+	(SELECT 
+		P.Id 
+	FROM dbo.Puesto as P
+	WHERE 
+		P.Nombre = @buscarPuesto);
 
-	UPDATE Empleado
-	SET Nombre = @nuevoNombre, FechaNacimiento = @nuevoFechaNacimiento, ValorDocIdentidad = @nuevoValorIdentidad, IdDepartamento = @nuevoDepartamento, IdPuesto = @nuevoPuesto, IdTipoDocIdentidad = @nuevoTipoIdentificacion
-	WHERE Nombre = @buscarNombre
-	  
+	---Realiza la busqueda del tipo documento de identificacion segun su nombre y devuelve el valor de su id
+	DECLARE @nuevoTipoIdentificacion INT = 
+	(SELECT 
+		T.Id 
+	FROM dbo.TipoDocIdentidad as T
+	WHERE 
+		T.Nombre = @buscarTipoIdentificacion);
 
+	---Realiza la busqueda del puesto segun su nombre y devuelve el valor de su id
+	DECLARE @nuevoDepartamento INT = 
+	(SELECT 
+		D.Id 
+	FROM dbo.Departamentos as D
+	WHERE 
+		D.Nombre = @buscarDepartamento);
+
+	UPDATE dbo.Empleado 
+	SET 
+		Nombre = @nuevoNombre
+		, FechaNacimiento = @nuevoFechaNacimiento
+		, ValorDocIdentidad = @nuevoValorIdentidad
+		, IdDepartamento = @nuevoDepartamento
+		, IdPuesto = @nuevoPuesto
+		, IdTipoDocIdentidad = @nuevoTipoIdentificacion
+	WHERE 
+		Nombre = @buscarNombre
 END

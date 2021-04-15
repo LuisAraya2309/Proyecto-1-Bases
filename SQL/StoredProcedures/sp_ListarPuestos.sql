@@ -9,8 +9,10 @@ CREATE PROCEDURE sp_ListarPuestos
 AS
 BEGIN
 
-	SELECT * FROM Puesto 
-	ORDER BY Nombre
+	SELECT 
+		* 
+	FROM dbo.Puesto as P
+	ORDER BY P.Nombre
 
 END
 GO

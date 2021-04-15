@@ -9,11 +9,14 @@ CREATE PROCEDURE sp_ListarEmpleadosFiltro @filtro varchar(40)
 AS
 BEGIN
 
-	SELECT Empleado.Nombre , Puesto.Nombre
-	FROM Empleado INNER JOIN Puesto
-	ON Empleado.IdPuesto =  Puesto.Id
-	WHERE Empleado.Nombre LIKE @filtro
-	ORDER BY Empleado.Nombre;
+	SELECT 
+		E.Nombre 
+		, P.Nombre
+	FROM dbo.Empleado as E 
+	INNER JOIN dbo.Puesto as P ON E.idPuesto =  P.Id
+	WHERE 
+		E.Nombre LIKE @filtro
+	ORDER BY E.Nombre;
 
 END
 GO

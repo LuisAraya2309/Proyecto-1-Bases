@@ -9,12 +9,14 @@ SET QUOTED_IDENTIFIER ON
 GO
 
 
-CREATE PROCEDURE [dbo].[sp_ListarDepartamento]
+CREATE PROCEDURE sp_ListarDepartamento
 AS
 BEGIN
 
-    SELECT * FROM Departamentos
-    ORDER BY Nombre
+    SELECT 
+		*
+	FROM dbo.Departamentos as D
+    ORDER BY D.Nombre
 
 END
 GO
