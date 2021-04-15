@@ -25,25 +25,31 @@
             String fechaNacimiento = request.getParameter("fechaNacimiento");
             String puesto = request.getParameter("puesto");
             String departamento = request.getParameter("departamento");
-            if(!validacionesSQL.existeEmpleado(nuevoNombre)&& nuevoNombre.length()<40 ){
-                try{ 
-                    conexionBD conection = new conexionBD();
-                    Connection conexion = conection.getConexion();
-                    String callSP = "EXECUTE sp_IngresarEmpleado ?,?,?,?,?,?,?";
-                    PreparedStatement ps = conexion.prepareStatement(callSP);
-                    ps.setString(1, nuevoNombre);
-                    ps.setString(2, tipoDocIdentidad);
-                    ps.setInt(3, valorDocIdentidad);
-                    ps.setString(4, fechaNacimiento);
-                    ps.setString(5,puesto);
-                    ps.setString(6, departamento);
-                    ps.executeQuery();
-                }catch(SQLException ex){
+            if(!validacionesSQL.existeEmpleado(nuevoNombre)&& nuevoNombre.length()<40){
+                if(validacionesSQL.validarFecha(fechaNacimiento)){
+                    try{ 
+                            conexionBD conection = new conexionBD();
+                            Connection conexion = conection.getConexion();
+                            String callSP = "EXECUTE sp_IngresarEmpleado ?,?,?,?,?,?,?";
+                            PreparedStatement ps = conexion.prepareStatement(callSP);
+                            ps.setString(1, nuevoNombre);
+                            ps.setString(2, tipoDocIdentidad);
+                            ps.setInt(3, valorDocIdentidad);
+                            ps.setString(4, fechaNacimiento);
+                            ps.setString(5,puesto);
+                            ps.setString(6, departamento);
+                            ps.executeQuery();
+                        }catch(SQLException ex){
 
-                }
-                out.println("<h1>Empleado editado con éxito</h1>");
-                out.println("<a href='central.html'>Regresar a la central</a>");
-                out.println("<a href='editarEmpleados.html'>Regresar a la edición de empleados</a>");
+                        }
+                        out.println("<h1>Empleado editado con éxito</h1>");
+                        out.println("<a href='central.html'>Regresar a la central</a>");
+                        out.println("<a href='editarEmpleados.html'>Regresar a la edición de empleados</a>");
+                    }
+                    else{
+                        out.println("<h1>Formato de fecha inválido </h1>");
+                        out.println("<a href='editarEmpleados.jsp'>Regresar a la inserción de empleados</a>");
+                    }
                 }
             else{
                 out.println("<h1>Nombre invalido, debe de tener menos de 40 caracteres,debe existir dicho empleado a editar y el nuevo nombre no debe de estar repetido </h1>");

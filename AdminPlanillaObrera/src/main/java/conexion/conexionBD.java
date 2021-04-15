@@ -26,7 +26,6 @@ public class conexionBD {
               Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
               try{
                   Connection con =  DriverManager.getConnection(conexionUrl);
-                  System.out.println("Conexion lista");
                   this.conexion = con;
               } catch(SQLException ex){
                   System.out.println(ex.toString());

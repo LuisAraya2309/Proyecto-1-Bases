@@ -1,7 +1,8 @@
 
 
+<%@page import="validaciones.validacionesSQL"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@page import = "validaciones.ValidarLogin"%>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -12,7 +13,7 @@
         <%
             String user = request.getParameter("user");
             String password = request.getParameter("password");
-            if(ValidarLogin.validLogin(user, password)){
+            if(validacionesSQL.validLogin(user, password)){
                 response.sendRedirect("central.html");
             }
             else{
