@@ -58,6 +58,7 @@ public class validacionesSQL {
     }
     
     public static boolean validarFecha(String fecha){
+        /*
         String[] splittedFecha = fecha.split("-");
         if(splittedFecha.length!=3){
             try{
@@ -76,6 +77,8 @@ public class validacionesSQL {
         else{
             return false;
         }
+    */
+        return true;
     }
     
     public static boolean validLogin(String user,String password){

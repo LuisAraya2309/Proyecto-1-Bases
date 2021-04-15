@@ -22,15 +22,15 @@
                 String empleadoActualizado =""; 
                 if(empleadoSeleccionado!=null){
                     String[] infoEmpleado = empleadoSeleccionado.split(" ");
-                    empleadoActualizado = infoEmpleado[1]; 
+                    empleadoActualizado = infoEmpleado[1] + infoEmpleado[2];
                 }
                 else{
                 empleadoActualizado = "";
                 }
             %>
-            Nombre Empleado a editar: <input type="text" name="nombreEmpleado" value="<%= empleadoActualizado%>">
-            Nuevo Nombre: <input type="text" name="nuevoNombre" >
-            Tipo de Documento de Identidad: <select name="tipoDocIdentidad" id="tipoDocIdentidad">
+            Nombre Empleado a editar: <input type="text" name="nombreEmpleado" value="<%= empleadoActualizado%>" required="">
+            Nuevo Nombre: <input type="text" name="nuevoNombre" required="">
+            Tipo de Documento de Identidad: <select name="tipoDocIdentidad" id="tipoDocIdentidad" required="">
                 <% try{ 
                 conexionBD conection = new conexionBD();
                 Connection conexion = conection.getConexion();
@@ -53,9 +53,9 @@
             %>
             </select>
             
-           Valor de documento de identidad: <input type="text" name="valorDocIdentidad">
+           Valor de documento de identidad: <input type="text" name="valorDocIdentidad" required="">
            
-           Fecha de Nacimiento: <input type="text" name="fechaNacimiento">
+           Fecha de Nacimiento: <input type="text" name="fechaNacimiento" required="">
            
            Puesto:
             <select name="puesto" id="puesto">
@@ -84,7 +84,7 @@
             %>
             </select>
            
-           Departamento:<select name="departamento" id="departamento">
+           Departamento:<select name="departamento" id="departamento" required="">
            <% try{ 
                 conexionBD conection = new conexionBD();
                 Connection conexion = conection.getConexion();

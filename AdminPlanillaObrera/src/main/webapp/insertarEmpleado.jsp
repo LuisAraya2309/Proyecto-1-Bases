@@ -16,7 +16,7 @@
     </head>
     <body>
         <form action="empleadoAIngresar.jsp">
-            Nuevo Nombre: <input type="text" name="nuevoNombre" >
+            Nuevo Nombre: <input type="text" name="nuevoNombre" required="">
             Tipo de Documento de Identidad: <select name="tipoDocIdentidad" id="tipoDocIdentidad">
                 <% try{ 
                 conexionBD conection = new conexionBD();
@@ -40,9 +40,9 @@
             %>
             </select>
             
-           Valor de documento de identidad: <input type="text" name="valorDocIdentidad">
+           Valor de documento de identidad: <input type="text" name="valorDocIdentidad" required="">
            
-           Fecha de Nacimiento: <input type="text" name="fechaNacimiento">
+           Fecha de Nacimiento: <input type="text" name="fechaNacimiento"required="">
            
            Puesto:
             <select name="puesto" id="puesto">
@@ -71,7 +71,7 @@
             %>
             </select>
            
-           Departamento:<select name="departamento" id="departamento">
+           Departamento:<select name="departamento" id="departamento" required="">
            <% try{ 
                 conexionBD conection = new conexionBD();
                 Connection conexion = conection.getConexion();
@@ -93,7 +93,7 @@
             } 
             %>
            </select>
-            
+            Saldo de Vacaciones: <input type="text" name="saldoVacaciones" required="">
            <input type="submit" name="insertar" id="insertar" value="Insertar">
         </form>
     </body>
