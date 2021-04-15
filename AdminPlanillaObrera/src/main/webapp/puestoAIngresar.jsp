@@ -14,6 +14,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link href = "styleFuncionalidades.css" type = "text/css"  rel = "stylesheet" /> 
         <title>Puesto Ingresado</title>
     </head>
     <body>

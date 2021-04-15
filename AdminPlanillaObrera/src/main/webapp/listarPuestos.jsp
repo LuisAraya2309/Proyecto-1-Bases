@@ -1,5 +1,4 @@
 
-
 <%@page import="java.sql.SQLException"%>
 <%@page import="java.util.List"%>
 <%@page import="java.util.ArrayList"%>
@@ -12,6 +11,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link href = "styleFuncionalidades.css" type = "text/css"  rel = "stylesheet" /> 
         <title>Listar Puestos</title>
     </head>
     <body>
@@ -29,7 +29,7 @@
                 List<String> puestosConvertidos = new ArrayList<>();
                 while(dataset.next()){
                    String puestoCompleto ="";
-                   puestoCompleto +="Nombre: "+dataset.getString("Nombre")+" ,Salario por Hora: "+dataset.getString("SalarioXHora");
+                   puestoCompleto +="Nombre: "+dataset.getString("Nombre")+" , Salario por Hora: "+dataset.getString("SalarioXHora");
                    puestosConvertidos.add(puestoCompleto);
                 }
                 int size = puestosConvertidos.size();

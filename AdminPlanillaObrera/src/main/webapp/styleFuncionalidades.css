@@ -1,0 +1,39 @@
+body{
+    background: url(fondo.png) ;
+    background-size: 100%;
+    font: oblique bold 200% cursive;
+}
+
+h1{
+    font: oblique bold 200% cursive;
+    background-color: #12435f;
+    padding: 20px;
+    color: #cc7484
+}
+
+input{
+    border: 2px solid #cc7484;
+    border-radius: 4px;
+    padding: 12px 20px;
+    background-color:#12435f;
+    font: Helvetica;
+    color:#cc7484
+  }
+
+select{
+    border: 2px solid #cc7484;
+    border-radius: 4px;
+    padding: 12px 20px;
+    background-color: #12435f;
+    font: Helvetica;
+    color:#cc7484
+}
+a{
+    color:#cc7484
+}
+
+form{
+    background-color: #0b1928;
+    padding: 20px;
+    color:#cc7484
+}

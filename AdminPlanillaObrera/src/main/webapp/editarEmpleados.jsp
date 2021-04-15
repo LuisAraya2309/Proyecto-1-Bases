@@ -13,6 +13,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link href = "styleFuncionalidades.css" type = "text/css"  rel = "stylesheet" /> 
         <title>Editar Empleados</title>
     </head>
     <body>
@@ -47,7 +48,7 @@
                 out.println("<option>"+docsConvertidos.get(i)+"</option>");
                }
             }catch(SQLException ex){
-               
+               System.out.println(ex);
             } 
             %>
             </select>

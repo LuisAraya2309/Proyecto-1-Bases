@@ -1,8 +1,9 @@
 
 h1{
     font: oblique bold 200% cursive;
-    background-color: bisque;
+    background-color: #12435f;
     padding: 20px;
+    color:  #cc7484
 }
 
 body{
@@ -19,4 +20,11 @@ commandButton{
 input{
   border: 2px solid red;
   border-radius: 4px;
+  padding: 12px 20px;
+  background-color: #12435f;
+  color:  #cc7484
+}
+
+form{
+    color:  #cc7484
 }
