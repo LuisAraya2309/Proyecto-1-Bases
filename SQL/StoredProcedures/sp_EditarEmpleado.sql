@@ -6,43 +6,73 @@ GO
 SET QUOTED_IDENTIFIER ON
 GO
 
-CREATE PROCEDURE sp_EditarEmpleado @buscarNombre varchar(40), @nuevoNombre varchar(40),@buscarTipoIdentificacion  varchar(40) ,@nuevoValorIdentidad int, @nuevoFechaNacimiento varchar(40), @buscarPuesto varchar(40), @buscarDepartamento  varchar(40)
+CREATE PROCEDURE dbo.sp_EditarEmpleado 
+	@inBuscarNombre VARCHAR(40)
+	, @inNuevoNombre VARCHAR(40)
+	, @inBuscarTipoIdentificacion  VARCHAR(40) 
+	, @inNuevoValorIdentidad INT
+	, @inNuevoFechaNacimiento VARCHAR(40)
+	, @inBuscarPuesto VARCHAR(40)
+	, @inBuscarDepartamento  VARCHAR(40)
 --Este procedimiento edita un empleado el cual es buscado por su nombre, y se cambian sus atributos por los parametros
 AS
 
 BEGIN
+	-- Codigo para probar el SP
+
+    --DECLARE
+		--@inBuscarNombre VARCHAR(40) =Luis Carlos
+		--, @inNuevoNombre VARCHAR(40) = Sebastián Díaz
+		--, @inBuscarTipoIdentificacion  = pasaporte
+		--, @inNuevoValorIdentidad INT = 305420217
+		--, @inNuevoFechaNacimiento VARCHAR(40) = 2002-11-01
+		--, @inBuscarPuesto VARCHAR(40) = gerente
+		--, @inBuscarDepartamento  VARCHAR(40) = laboratorio
+
+    --EXEC dbo.sp_EditarEmpleado 
+		--@inBuscarNombre 
+		--, @inNuevoNombre 
+		--, @inBuscarTipoIdentificacion
+		--, @inNuevoValorIdentidad 
+		--, @inNuevoFechaNacimiento 
+		--, @inBuscarPuesto 
+		--, @inBuscarDepartamento
+
 	---Realiza la busqueda del puesto segun su nombre y devuelve el valor de su id
-	DECLARE @nuevoPuesto INT = 
-	(SELECT 
+	DECLARE 
+		@nuevoPuesto INT  
+	 = (SELECT 
 		P.Id 
-	FROM dbo.Puesto as P
+	FROM dbo.Puesto AS P
 	WHERE 
-		P.Nombre = @buscarPuesto);
+		P.Nombre = @inBuscarPuesto);
 
 	---Realiza la busqueda del tipo documento de identificacion segun su nombre y devuelve el valor de su id
-	DECLARE @nuevoTipoIdentificacion INT = 
-	(SELECT 
+	DECLARE 
+		@nuevoTipoIdentificacion INT  
+	= (SELECT 
 		T.Id 
-	FROM dbo.TipoDocIdentidad as T
+	FROM dbo.TipoDocIdentidad AS T
 	WHERE 
-		T.Nombre = @buscarTipoIdentificacion);
+		T.Nombre = @inBuscarTipoIdentificacion);
 
 	---Realiza la busqueda del puesto segun su nombre y devuelve el valor de su id
-	DECLARE @nuevoDepartamento INT = 
-	(SELECT 
+	DECLARE 
+		@nuevoDepartamento INT 
+	= (SELECT 
 		D.Id 
-	FROM dbo.Departamentos as D
+	FROM dbo.Departamento AS D
 	WHERE 
-		D.Nombre = @buscarDepartamento);
+		D.Nombre = @inBuscarDepartamento);
 
 	UPDATE dbo.Empleado 
 	SET 
-		Nombre = @nuevoNombre
-		, FechaNacimiento = @nuevoFechaNacimiento
-		, ValorDocIdentidad = @nuevoValorIdentidad
+		Nombre = @inNuevoNombre
+		, FechaNacimiento = @inNuevoFechaNacimiento
+		, ValorDocIdentidad = @inNuevoValorIdentidad
 		, IdDepartamento = @nuevoDepartamento
 		, IdPuesto = @nuevoPuesto
 		, IdTipoDocIdentidad = @nuevoTipoIdentificacion
 	WHERE 
-		Nombre = @buscarNombre
+		Nombre = @inBuscarNombre
 END

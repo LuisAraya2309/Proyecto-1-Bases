@@ -5,16 +5,27 @@ SET QUOTED_IDENTIFIER ON
 GO
 
 
-CREATE PROCEDURE sp_InsertarPuesto @nuevoNombre varchar(40), @nuevoSalario int
+CREATE PROCEDURE dbo.sp_InsertarPuesto 
+	@inNuevoNombre VARCHAR(40)
+	, @inNuevoSalario INT
 
 AS
 
 BEGIN
+	-- Codigo para probar el SP
+
+    --DECLARE
+		-- @inNuevoNombre VARCHAR(40) = programador junior
+		-- , @inNuevoSalario INT = 4000
+
+    --EXEC dbo.sp_InsertarPuesto 
+		--@inNuevoNombre
+		-- , @inNuevoSalario
 
 	INSERT INTO dbo.Puesto
 	VALUES
-		(@nuevoNombre
-		,@nuevoSalario
+		(@inNuevoNombre
+		,@inNuevoSalario
 		,1)
 
 END

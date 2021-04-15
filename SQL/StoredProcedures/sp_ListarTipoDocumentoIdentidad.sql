@@ -9,13 +9,18 @@ SET QUOTED_IDENTIFIER ON
 GO
 
 
-CREATE PROCEDURE sp_ListarTipoDocIdentidad
+CREATE PROCEDURE dbo.sp_ListarTipoDocIdentidad
 AS
 BEGIN
+	-- Codigo para probar el SP
+
+    --EXEC dbo.sp_ListarTipoDocIdentidad 
 
     SELECT 
 		*
-	FROM dbo.TipoDocIdentidad as T
+	FROM dbo.TipoDocIdentidad AS T
+	WHERE 
+		T.activo = 1
     ORDER BY T.Nombre
 
 END

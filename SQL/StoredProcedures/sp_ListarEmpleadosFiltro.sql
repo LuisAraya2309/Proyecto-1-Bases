@@ -4,18 +4,22 @@ GO
 SET QUOTED_IDENTIFIER ON
 GO
 
-CREATE PROCEDURE sp_ListarEmpleadosFiltro @filtro varchar(40)
+CREATE PROCEDURE dbo.sp_ListarEmpleadosFiltro 
+	@inFiltro varchar(40)
 --Devuelve la lista de todos los empleados ordenados por un filtro
 AS
 BEGIN
+	-- Codigo para probar el SP
 
+    --EXEC dbo.sp_ListarEmpleadosFiltro
 	SELECT 
 		E.Nombre 
 		, P.Nombre
-	FROM dbo.Empleado as E 
-	INNER JOIN dbo.Puesto as P ON E.idPuesto =  P.Id
+	FROM dbo.Empleado AS E 
+	INNER JOIN dbo.Puesto AS P ON E.idPuesto =  P.Id
 	WHERE 
-		E.Nombre LIKE @filtro
+		E.Nombre LIKE @inFiltro
+		AND E.activo = 1
 	ORDER BY E.Nombre;
 
 END

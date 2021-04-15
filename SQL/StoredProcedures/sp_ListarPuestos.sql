@@ -4,14 +4,19 @@ GO
 SET QUOTED_IDENTIFIER ON
 GO
 
-CREATE PROCEDURE sp_ListarPuestos
+CREATE PROCEDURE dbo.sp_ListarPuestos
 --PRIMERA FUNCIONALIDAD: Devuelve la lista de todos los puestos ordenados alfabéticamente
 AS
 BEGIN
+	-- Codigo para probar el SP
+
+    --EXEC dbo.sp_ListarPuesto 
 
 	SELECT 
 		* 
-	FROM dbo.Puesto as P
+	FROM dbo.Puesto AS P
+	WHERE 
+		P.activo = 1
 	ORDER BY P.Nombre
 
 END

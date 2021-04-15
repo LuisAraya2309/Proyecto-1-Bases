@@ -5,45 +5,71 @@ SET QUOTED_IDENTIFIER ON
 GO
 
 
-CREATE PROCEDURE sp_InsertarEmpleado @nuevoNombre varchar(40),@buscarTipoIdentificacion  varchar(40) ,@nuevoValorIdentidad int, @nuevoFechaNacimiento varchar(40), @buscarPuesto varchar(40), @buscarDepartamento  varchar(40), @nuevoSaldoVacaciones int
+CREATE PROCEDURE dbo.sp_InsertarEmpleado 
+	@inNuevoNombre VARCHAR(40)
+	, @inBuscarTipoIdentificacion  VARCHAR(40)
+	, @inNuevoValorIdentidad INT
+	, @inNuevoFechaNacimiento VARCHAR(40)
+	, @inBuscarPuesto VARCHAR(40)
+	, @inBuscarDepartamento  VARCHAR(40)
+	, @inNuevoSaldoVacaciones INT
 
 AS
 
 BEGIN
+	-- Codigo para probar el SP
+
+    --DECLARE
+		--@inNuevoNombre VARCHAR(40) = Carlos Esteban
+		--, @inBuscarTipoIdentificacion  = cedula nacional
+		--, @inNuevoValorIdentidad INT = 542645365
+		--, @inNuevoFechaNacimiento VARCHAR(40) = 1988-12-29
+		--, @inBuscarPuesto VARCHAR(40) = gerente
+		--, @inBuscarDepartamento  VARCHAR(40) = laboratorio
+		--, @inNuevoSaldoVacaciones INT = 5000
+
+    --EXEC dbo.sp_InsertarEmpleado 
+		--@inNuevoNombre 
+		--, @inBuscarTipoIdentificacion
+		--, @inNuevoValorIdentidad 
+		--, @inNuevoFechaNacimiento 
+		--, @inBuscarPuesto 
+		--, @inBuscarDepartamento
 
 	---Realiza la busqueda del puesto segun su nombre y devuelve el valor de su id
-	DECLARE @nuevoPuesto INT = 
-	(SELECT 
+	DECLARE 
+		@nuevoPuesto INT 
+	=(SELECT 
 		P.Id 
-	FROM dbo.Puesto as P
+	FROM dbo.Puesto AS P
 	WHERE 
-		P.Nombre = @buscarPuesto);
+		P.Nombre = @inBuscarPuesto);
 
 	---Realiza la busqueda del tipo documento de identificacion segun su nombre y devuelve el valor de su id
-	DECLARE @nuevoTipoIdentificacion INT = 
-	(SELECT 
+	DECLARE @nuevoTipoIdentificacion INT
+	= (SELECT 
 		T.Id 
-	FROM dbo.TipoDocIdentidad as T
+	FROM dbo.TipoDocIdentidad AS T
 	WHERE 
-		T.Nombre = @buscarTipoIdentificacion);
+		T.Nombre = @inBuscarTipoIdentificacion);
 
 	---Realiza la busqueda del puesto segun su nombre y devuelve el valor de su id
-	DECLARE @nuevoDepartamento INT = 
-	(SELECT 
+	DECLARE @nuevoDepartamento INT  
+	= (SELECT 
 		D.Id 
-	FROM dbo.Departamentos as D
+	FROM dbo.Departamento AS D
 	WHERE 
-		D.Nombre = @buscarDepartamento);
+		D.Nombre = @inBuscarDepartamento);
 
 	INSERT INTO dbo.Empleado
 	VALUES
 	(@nuevoPuesto
 	, @nuevoDepartamento
 	, @nuevoTipoIdentificacion
-	, @nuevoNombre
-	, @nuevoFechaNacimiento
-	, @nuevoValorIdentidad
-	, @nuevoSaldoVacaciones
+	, @inNuevoNombre
+	, @inNuevoFechaNacimiento
+	, @inNuevoValorIdentidad
+	, @inNuevoSaldoVacaciones
 	, 1)
 
 END
