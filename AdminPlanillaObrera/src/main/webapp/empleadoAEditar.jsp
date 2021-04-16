@@ -38,7 +38,7 @@
                             ps.setString(7, departamento);
                             ps.executeQuery();
                         }catch(SQLException ex){
-
+                            System.out.println(ex);
                         }
                         out.println("<h1>Empleado editado con éxito</h1>");
                         out.println("<a href='central.html'>Regresar a la central</a>");

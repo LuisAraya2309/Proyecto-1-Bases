@@ -5,6 +5,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Borrar Puesto</title>
+        <link href = "styleFuncionalidades.css" type = "text/css"  rel = "stylesheet" /> 
     </head>
     <body>
         <form action="puestoABorrar.jsp">

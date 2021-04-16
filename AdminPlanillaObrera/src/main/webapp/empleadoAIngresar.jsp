@@ -25,12 +25,13 @@
             String fechaNacimiento = request.getParameter("fechaNacimiento");
             String puesto = request.getParameter("puesto");
             String departamento = request.getParameter("departamento");
+            int saldoVacaciones = Integer.parseInt(request.getParameter("saldoVacaciones"));
             if(!validacionesSQL.existeEmpleado(nuevoNombre)&& nuevoNombre.length()<40){
                 if(validacionesSQL.validarFecha(fechaNacimiento)){
                     try{ 
                             conexionBD conection = new conexionBD();
                             Connection conexion = conection.getConexion();
-                            String callSP = "EXECUTE sp_IngresarEmpleado ?,?,?,?,?,?,?";
+                            String callSP = "EXECUTE sp_InsertarEmpleado ?,?,?,?,?,?,?";
                             PreparedStatement ps = conexion.prepareStatement(callSP);
                             ps.setString(1, nuevoNombre);
                             ps.setString(2, tipoDocIdentidad);
@@ -38,17 +39,18 @@
                             ps.setString(4, fechaNacimiento);
                             ps.setString(5,puesto);
                             ps.setString(6, departamento);
+                            ps.setInt(7, saldoVacaciones);
                             ps.executeQuery();
                         }catch(SQLException ex){
-
+                            System.out.println(ex);
                         }
-                        out.println("<h1>Empleado editado con éxito</h1>");
+                        out.println("<h1>Empleado insertado con éxito</h1>");
                         out.println("<a href='central.html'>Regresar a la central</a>");
-                        out.println("<a href='editarEmpleados.html'>Regresar a la edición de empleados</a>");
+                        out.println("<a href='insertarEmpleado.html'>Regresar a la inserción  de empleados</a>");
                     }
                     else{
                         out.println("<h1>Formato de fecha inválido </h1>");
-                        out.println("<a href='editarEmpleados.jsp'>Regresar a la inserción de empleados</a>");
+                        out.println("<a href='insertarEmpleado.jsp'>Regresar a la inserción de empleados</a>");
                     }
                 }
             else{
