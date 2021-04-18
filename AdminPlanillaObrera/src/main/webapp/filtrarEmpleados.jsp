@@ -30,7 +30,7 @@
                 List<String> empleadosConvertidos = new ArrayList<>();
                 while(dataset.next()){
                     String empleadoConstruir ="";
-                    empleadoConstruir+= "Nombre: " + dataset.getString("Nombre") + " ,Puesto: " + dataset.getString(2);
+                    empleadoConstruir+= "Nombre: " + dataset.getString("Nombre") + " ,Fecha de nacimiento: " + dataset.getString("fechaNacimiento")+ " ,Tipo documento ID: "+ dataset.getString(3)+ " ,Valor documento de ID: "+ dataset.getString("valorDocIdentidad")+ " ,Puesto: "+ dataset.getString(5)+ " ,Departamento "+ dataset.getString(6) ;
                     empleadosConvertidos.add(empleadoConstruir);
                 }
                 int size = empleadosConvertidos.size();
