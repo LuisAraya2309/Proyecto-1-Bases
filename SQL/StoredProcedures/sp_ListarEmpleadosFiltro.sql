@@ -12,7 +12,7 @@ BEGIN
 	-- Codigo para probar el SP
 
     --EXEC dbo.sp_ListarEmpleadosFiltro
-	SET NOTCOUNT ON;
+	SET NOCOUNT ON;
 
 	SELECT 
 		E.Nombre
@@ -31,7 +31,7 @@ BEGIN
 		AND E.activo = 1
 	ORDER BY E.Nombre;
 
-	SET NOTCOUNT OFF;
+	SET NOCOUNT OFF;
 
 END
 GO

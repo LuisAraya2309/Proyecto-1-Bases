@@ -22,7 +22,7 @@ BEGIN
 		--@inNuevoNombre
 		-- , @inNuevoSalario
 
-	SET NOTCOUNT ON;
+	SET NOCOUNT ON;
 
 	INSERT INTO dbo.Puesto
 	VALUES
@@ -30,7 +30,7 @@ BEGIN
 		,@inNuevoSalario
 		,1)
 
-	SET NOTCOUNT OFF;
+	SET NOCOUNT OFF;
 
 END
 

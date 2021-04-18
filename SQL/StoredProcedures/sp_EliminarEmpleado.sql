@@ -16,7 +16,7 @@ BEGIN
     --EXEC dbo.sp_EliminarEmpleado 
 		-- @inNombre
 
-	SET NOTCOUNT ON;
+	SET NOCOUNT ON;
 
 	UPDATE dbo.Empleado
 	SET 
@@ -24,7 +24,7 @@ BEGIN
 	WHERE 
 		Nombre = @inNombre
 
-	SET NOTCOUNT OFF;
+	SET NOCOUNT OFF;
 
 END
 GO

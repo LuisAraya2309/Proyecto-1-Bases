@@ -15,7 +15,7 @@ BEGIN
 
     --EXEC dbo.sp_ListarDepartamento 
 
-	SET NOTCOUNT ON;
+	SET NOCOUNT ON;
 
     SELECT 
 		*
@@ -24,7 +24,7 @@ BEGIN
 		D.activo = 1
     ORDER BY D.Nombre
 
-	SET NOTCOUNT OFF;
+	SET NOCOUNT OFF;
 END
 GO
 

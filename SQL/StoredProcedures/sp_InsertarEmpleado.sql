@@ -36,7 +36,7 @@ BEGIN
 		--, @inBuscarPuesto 
 		--, @inBuscarDepartamento
 
-	SET NOTCOUNT ON;
+	SET NOCOUNT ON;
 
 	---Realiza la busqueda del puesto segun su nombre y devuelve el valor de su id
 	DECLARE 
@@ -74,7 +74,7 @@ BEGIN
 	, @inNuevoSaldoVacaciones
 	, 1)
 
-	SET NOTCOUNT OFF;
+	SET NOCOUNT OFF;
 
 END
 

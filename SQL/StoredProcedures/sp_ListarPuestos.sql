@@ -12,7 +12,7 @@ BEGIN
 
     --EXEC dbo.sp_ListarPuesto 
 
-	SET NOTCOUNT ON;
+	SET NOCOUNT ON;
 
 	SELECT 
 		* 
@@ -21,7 +21,7 @@ BEGIN
 		P.activo = 1
 	ORDER BY P.Nombre
 
-	SET NOTCOUNT OFF;
+	SET NOCOUNT OFF;
 
 END
 GO
