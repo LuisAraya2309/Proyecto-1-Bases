@@ -19,29 +19,35 @@
     </head>
     <body>
         <%
-            String user = request.getParameter("user");
-            String password = request.getParameter("password");
-            if(validacionesSQL.validLogin(user, password)){
-                try{ 
+            try{ 
                 conexionBD conection = new conexionBD();
                 Connection conexion = conection.getConexion();
                 String callSP = "EXECUTE sp_ListarUsuarios";
                 PreparedStatement ps = conexion.prepareStatement(callSP);
                 ResultSet dataset = ps.executeQuery();
-                if(dataset.equals(null)){
+                HashMap<String, String> comprobar = new HashMap<>();
+                while(dataset.next()){
+                   comprobar.put(dataset.getString("username"),dataset.getString("password"));
+                }
+                if(comprobar.size()==0){
+                    System.out.println("Cargando Datos");
                     String cargarXML = "EXECUTE sp_CargarXML";
                     PreparedStatement cargar = conexion.prepareStatement(cargarXML);
                     cargar.executeQuery();
                 }
-                response.sendRedirect("central.html");
-
-            }catch(SQLException ex){
-              
-            }    
-            }
-            else{
-                out.println("Usuario no registrado <a href='index.html'>Intente de nuevo</a>");
-            }
+                System.out.println("Ya hay datos");
+                String user = request.getParameter("user");
+                String password = request.getParameter("password");
+                if(validacionesSQL.validLogin(user, password)){
+                    response.sendRedirect("central.html");
+                }
+                else{
+                    out.println("Usuario no registrado <a href='index.html'>Intente de nuevo</a>");
+                }
+                }catch(SQLException ex){
+                    response.sendRedirect("central.html");
+                }  
         %>
+        
     </body>
 </html>

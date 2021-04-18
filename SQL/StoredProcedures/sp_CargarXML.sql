@@ -108,5 +108,3 @@ INSERT INTO dbo.Usuarios
 
 END
 GO
-
-EXEC sp_CargarXML
