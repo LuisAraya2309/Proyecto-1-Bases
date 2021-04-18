@@ -10,12 +10,17 @@ BEGIN
 	-- Codigo para probar el SP
 
     --EXEC dbo.sp_ListarUsuarios
+
+	SET NOCOUNT ON;
+
 	SELECT 
 		* 
 	FROM dbo.Usuarios AS U
 	WHERE 
 		U.activo = 1
-	ORDER BY U.Nombre
+	ORDER BY U.username
+
+	SET NOCOUNT OFF;
 
 END
 GO

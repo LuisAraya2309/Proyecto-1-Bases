@@ -22,11 +22,15 @@ BEGIN
 		--@inNuevoNombre
 		-- , @inNuevoSalario
 
+	SET NOCOUNT ON;
+
 	INSERT INTO dbo.Puesto
 	VALUES
 		(@inNuevoNombre
 		,@inNuevoSalario
 		,1)
+
+	SET NOCOUNT OFF;
 
 END
 

@@ -16,11 +16,15 @@ BEGIN
     --EXEC dbo.sp_EliminarPuesto
 		-- @inNombre
 
+	SET NOCOUNT ON;
+
 	UPDATE dbo.Puesto
 	SET 
 		activo = 0
 	WHERE 
 		Nombre = @inNombre
+
+	SET NOCOUNT OFF;
 
 END
 GO

@@ -12,12 +12,16 @@ BEGIN
 
     --EXEC dbo.sp_ListarPuesto 
 
+	SET NOCOUNT ON;
+
 	SELECT 
 		* 
 	FROM dbo.Puesto AS P
 	WHERE 
 		P.activo = 1
 	ORDER BY P.Nombre
+
+	SET NOCOUNT OFF;
 
 END
 GO
