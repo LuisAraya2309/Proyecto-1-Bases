@@ -38,6 +38,7 @@ BEGIN
 		--, @inBuscarPuesto 
 		--, @inBuscarDepartamento
 
+		SET NOTCOUNT ON;
 	---Realiza la busqueda del puesto segun su nombre y devuelve el valor de su id
 	DECLARE 
 		@nuevoPuesto INT  
@@ -75,4 +76,7 @@ BEGIN
 		, IdTipoDocIdentidad = @nuevoTipoIdentificacion
 	WHERE 
 		Nombre = @inBuscarNombre
+
+	SET NOTCOUNT OFF;
+
 END

@@ -25,6 +25,7 @@ BEGIN
 		-- , @inNuevoNombre 
 		-- , @inNuevoSalario 
 
+	SET NOTCOUNT ON;
 
 	UPDATE dbo.Puesto
 	SET 
@@ -33,7 +34,8 @@ BEGIN
 	WHERE 
 		Nombre = @inBuscarNombre
 
-END
+	SET NOTCOUNT OFF;
 
+END
 GO
 

@@ -16,12 +16,15 @@ BEGIN
     --EXEC dbo.sp_EliminarEmpleado 
 		-- @inNombre
 
+	SET NOTCOUNT ON;
 
 	UPDATE dbo.Empleado
 	SET 
 		activo = 0
 	WHERE 
 		Nombre = @inNombre
+
+	SET NOTCOUNT OFF;
 
 END
 GO

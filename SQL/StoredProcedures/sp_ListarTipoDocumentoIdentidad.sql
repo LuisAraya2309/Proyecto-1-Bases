@@ -15,6 +15,7 @@ BEGIN
 	-- Codigo para probar el SP
 
     --EXEC dbo.sp_ListarTipoDocIdentidad 
+	SET NOTCOUNT ON;
 
     SELECT 
 		*
@@ -22,6 +23,8 @@ BEGIN
 	WHERE 
 		T.activo = 1
     ORDER BY T.Nombre
+
+	SET NOTCOUNT OFF;
 
 END
 GO
