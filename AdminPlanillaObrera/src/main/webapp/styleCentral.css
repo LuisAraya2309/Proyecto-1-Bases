@@ -6,9 +6,11 @@ input{
   font: Helvetica;
   color: #cc7484
 }
+
 div{
     display:block;
 }
+
 h1{
     font: oblique bold 200% cursive;
     background-color:#12435f;

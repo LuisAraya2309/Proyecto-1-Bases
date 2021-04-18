@@ -1,7 +1,7 @@
 USE [PlanillaObrera]
 GO
 
-/****** Object:  Table [dbo].[Usuarios]    Script Date: 16/04/2021 08:02:11 a. m. ******/
+/****** Object:  Table [dbo].[Usuarios]    Script Date: 18/04/2021 12:05:55 p. m. ******/
 SET ANSI_NULLS ON
 GO
 
@@ -11,7 +11,7 @@ GO
 CREATE TABLE [dbo].[Usuarios](
 	[id] [int] IDENTITY(1,1) NOT NULL,
 	[username] [varchar](40) NOT NULL,
-	[password] [varchar](40) NOT NULL,
+	[pwd] [varchar](40) NOT NULL,
 	[tipo] [int] NOT NULL,
 	[activo] [bit] NOT NULL,
  CONSTRAINT [PK_Usuarios] PRIMARY KEY CLUSTERED 
