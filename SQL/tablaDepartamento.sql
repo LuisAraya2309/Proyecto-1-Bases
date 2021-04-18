@@ -1,7 +1,7 @@
 USE [PlanillaObrera]
 GO
 
-/****** Object:  Table [dbo].[Departamento]    Script Date: 15/04/2021 02:23:44 p. m. ******/
+/****** Object:  Table [dbo].[Departamento]    Script Date: 18/04/2021 14:20:03 ******/
 SET ANSI_NULLS ON
 GO
 
@@ -11,7 +11,6 @@ GO
 CREATE TABLE [dbo].[Departamento](
 	[id] [int] NOT NULL,
 	[nombre] [varchar](40) NOT NULL,
-	[idJefe] [int] NULL,
 	[activo] [bit] NOT NULL,
  CONSTRAINT [PK_Departamento] PRIMARY KEY CLUSTERED 
 (

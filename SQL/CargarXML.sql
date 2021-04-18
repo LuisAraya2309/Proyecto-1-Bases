@@ -1,11 +1,14 @@
 USE [PlanillaObrera]
+SET NOCOUNT	OFF
+GO
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
 
+
 CREATE PROCEDURE sp_CargarXML 
-	
+
 AS
 BEGIN
 
@@ -48,8 +51,7 @@ INSERT INTO Departamento
 
 	SELECT
 		departamento.value('@Id','INT') AS id,
-		departamento.value('@Nombre','VARCHAR(40)') AS nombre,
-		NULL AS idJefe ,  
+		departamento.value('@Nombre','VARCHAR(40)') AS nombre, 
 		1 AS activo
 		
 	FROM
@@ -101,7 +103,7 @@ INSERT INTO dbo.Usuarios
 			SINGLE_BLOB
 		) AS T(c)
 		) AS S(C)
-		CROSS APPLY c.nodes('Datos/Catalogos/Usuarios/Usuario') AS A(usuario)
+		CROSS APPLY c.nodes('Datos/Usuarios/Usuario') AS A(usuario)
 
 
 END

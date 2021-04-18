@@ -1,7 +1,7 @@
 USE [PlanillaObrera]
 GO
 
-/****** Object:  Table [dbo].[Puesto]    Script Date: 15/04/2021 02:24:27 p. m. ******/
+/****** Object:  Table [dbo].[Puesto]    Script Date: 18/04/2021 14:12:02 ******/
 SET ANSI_NULLS ON
 GO
 
@@ -9,7 +9,7 @@ SET QUOTED_IDENTIFIER ON
 GO
 
 CREATE TABLE [dbo].[Puesto](
-	[id] [int] IDENTITY(1,1) NOT NULL,
+	[id] [int] NOT NULL,
 	[Nombre] [varchar](40) NOT NULL,
 	[salarioxHora] [int] NOT NULL,
 	[activo] [bit] NOT NULL,
