@@ -22,7 +22,7 @@
             String fechaNacimiento = request.getParameter("fechaNacimiento");
             String puesto = request.getParameter("puesto");
             String departamento = request.getParameter("departamento");
-            if(validacionesSQL.existeEmpleado(nombre) && !validacionesSQL.existeEmpleado(nuevoNombre)&& nuevoNombre.length()<40 ){
+            if(validacionesSQL.existeEmpleadoNombre(nombre)&& !validacionesSQL.existeEmpleado(valorDocIdentidad+"")&&nuevoNombre.length()<40 ){
                 if(validacionesSQL.validarFecha(fechaNacimiento)){
                     try{ 
                             conexionBD conection = new conexionBD();

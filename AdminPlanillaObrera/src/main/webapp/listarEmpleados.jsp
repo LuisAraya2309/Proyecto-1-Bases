@@ -39,7 +39,7 @@
                     dataset.getString("valorDocIdentidad")+
                     " ,Puesto: "+
                     dataset.getString(5)+ 
-                    " ,Departamento "+ 
+                    " ,Departamento: "+ 
                     dataset.getString(6) ;
                     empleadosConvertidos.add(empleadoConstruir);
                 }

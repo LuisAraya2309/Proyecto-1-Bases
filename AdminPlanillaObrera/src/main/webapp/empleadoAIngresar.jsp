@@ -25,12 +25,12 @@
             String fechaNacimiento = request.getParameter("fechaNacimiento");
             String puesto = request.getParameter("puesto");
             String departamento = request.getParameter("departamento");
-            if(!validacionesSQL.existeEmpleado(nuevoNombre)&& nuevoNombre.length()<40){
+            if(nuevoNombre.length()<40 && (!validacionesSQL.existeEmpleado(valorDocIdentidad+""))){
                 if(validacionesSQL.validarFecha(fechaNacimiento)){
                     try{ 
                             conexionBD conection = new conexionBD();
                             Connection conexion = conection.getConexion();
-                            String callSP = "EXECUTE sp_InsertarEmpleado ?,?,?,?,?,?,?";
+                            String callSP = "EXECUTE sp_InsertarEmpleado ?,?,?,?,?,?";
                             PreparedStatement ps = conexion.prepareStatement(callSP);
                             ps.setString(1, nuevoNombre);
                             ps.setString(2, tipoDocIdentidad);
@@ -52,7 +52,7 @@
                     }
                 }
             else{
-                out.println("<h1>Nombre invalido, debe de tener menos de 40 caracteres,debe existir dicho empleado a editar y el nuevo nombre no debe de estar repetido </h1>");
+                out.println("<h1>El nombre debe de tener menos de 40 caracteres y el valor de documento de identidad no debe de estar repetido</h1>");
                 out.println("<a href='editarEmpleados.jsp'>Regresar a la edición de empleados</a>");
             }
         %>

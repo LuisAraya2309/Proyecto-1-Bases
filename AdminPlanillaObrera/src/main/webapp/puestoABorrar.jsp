@@ -19,30 +19,39 @@
     </head>
     <body>
         <%
-          String puesto = request.getParameter("puesto");
-          if(validacionesSQL.existePuesto(puesto)){
-            try{ 
-                  conexionBD conection = new conexionBD();
-                  Connection conexion = conection.getConexion();
-                  String callSP = "EXECUTE sp_EliminarPuesto ?";
-                  PreparedStatement ps = conexion.prepareStatement(callSP);
-                  ps.setString(1,puesto);
-                  ps.executeQuery();
+        String puestoSeleccionado  = request.getParameter("puesto");
+        String puestoActualizado =""; 
+        String[] infoPuesto = puestoSeleccionado.split(" ");
+        puestoActualizado = infoPuesto[1]; 
+        if(!validacionesSQL.existeEmpleadoPuesto(puestoActualizado)){
+            if(validacionesSQL.existePuesto(puestoActualizado)){
+                try{ 
+                      conexionBD conection = new conexionBD();
+                      Connection conexion = conection.getConexion();
+                      String callSP = "EXECUTE sp_EliminarPuesto ?";
+                      PreparedStatement ps = conexion.prepareStatement(callSP);
+                      ps.setString(1,puestoActualizado);
+                      ps.executeQuery();
 
-              }catch(SQLException ex){
+                  }catch(SQLException ex){
 
-              }
-              out.println("<h1>Puesto eliminado con éxito</h1>");
-              out.println("<a href='central.html'>Regresar a la central</a>");
-              out.println("<a href='borrarPuesto.jsp'>Regresar a la eliminación de puestos</a>");
+                  }
+                  out.println("<h1>Puesto eliminado con éxito</h1>");
+                  out.println("<a href='central.html'>Regresar a la central</a>");
+                  out.println("<a href='borrarPuesto.jsp'>Regresar a la eliminación de puestos</a>");
 
-            }
-            else{
-                out.println("<h1>El puesto ingresado no existe</h1>");
-                out.println("<a href='central.html'>Regresar a la central</a>");
-                out.println("<a href='borrarPuesto.jsp'>Regresar a la eliminación de puestos</a>");
-            }
-          
+                }
+                else{
+                    out.println("<h1>El puesto ingresado no existe</h1>");
+                    out.println("<a href='central.html'>Regresar a la central</a>");
+                    out.println("<a href='borrarPuesto.jsp'>Regresar a la eliminación de puestos</a>");
+                }
+        }
+        else{
+            out.println("<h1>Error: Existen empleados que laboran para el puesto que usted desea borrar, debe reasignarlos antes de borrar</h1>");
+            out.println("<a href='central.html'>Regresar a la central</a>");
+            out.println("<a href='borrarPuesto.jsp'>Regresar a la eliminación de puestos</a>");
+        }        
         %>
         
     </body>

@@ -67,10 +67,58 @@ public class validacionesSQL {
                     ResultSet dataset = ps.executeQuery();
                     List<String> empleadosConvertidos = new ArrayList<>();
                     while(dataset.next()){
+                       empleadosConvertidos.add(dataset.getString("valorDocIdentidad"));
+                    }
+                    for(int i=0;i<empleadosConvertidos.size();i++){
+                        if(empleado.equals(empleadosConvertidos.get(i))){
+                            return true;
+                        }
+                    }
+                    return false;
+
+                }catch(SQLException ex){
+                   return false;
+                } 
+    }
+    
+     public static boolean existeEmpleadoNombre(String empleado){
+            try{ 
+
+                    conexionBD conection = new conexionBD();
+                    Connection conexion = conection.getConexion();
+                    String callSP = "EXECUTE sp_ListarEmpleados";
+                    PreparedStatement ps = conexion.prepareStatement(callSP);
+                    ResultSet dataset = ps.executeQuery();
+                    List<String> empleadosConvertidos = new ArrayList<>();
+                    while(dataset.next()){
                        empleadosConvertidos.add(dataset.getString("Nombre"));
                     }
                     for(int i=0;i<empleadosConvertidos.size();i++){
                         if(empleado.equals(empleadosConvertidos.get(i))){
+                            return true;
+                        }
+                    }
+                    return false;
+
+                }catch(SQLException ex){
+                   return false;
+                } 
+    }
+    
+     public static boolean existeEmpleadoPuesto(String puesto){
+            try{ 
+
+                    conexionBD conection = new conexionBD();
+                    Connection conexion = conection.getConexion();
+                    String callSP = "EXECUTE sp_ListarEmpleados";
+                    PreparedStatement ps = conexion.prepareStatement(callSP);
+                    ResultSet dataset = ps.executeQuery();
+                    List<String> empleadosConvertidos = new ArrayList<>();
+                    while(dataset.next()){
+                       empleadosConvertidos.add(dataset.getString(5));
+                    }
+                    for(int i=0;i<empleadosConvertidos.size();i++){
+                        if(puesto.equals(empleadosConvertidos.get(i))){
                             return true;
                         }
                     }

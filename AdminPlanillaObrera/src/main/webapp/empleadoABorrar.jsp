@@ -18,8 +18,10 @@
     </head>
     <body>
         <%
-          String nombre = request.getParameter("nombre");
-          if(validacionesSQL.existeEmpleado(nombre)){
+          String datos = request.getParameter("empleado");
+          String[] info = datos.split(" ");
+          String nombre = info[1] + " "+ info[2] + " " +info[3];
+          if(validacionesSQL.existeEmpleadoNombre(nombre)){
             try{ 
                   conexionBD conection = new conexionBD();
                   Connection conexion = conection.getConexion();

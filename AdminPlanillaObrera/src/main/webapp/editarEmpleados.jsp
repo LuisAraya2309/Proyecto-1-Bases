@@ -22,7 +22,7 @@
                 String empleadoActualizado =""; 
                 if(empleadoSeleccionado!=null){
                     String[] infoEmpleado = empleadoSeleccionado.split(" ");
-                    empleadoActualizado = infoEmpleado[1] + infoEmpleado[2];
+                    empleadoActualizado = infoEmpleado[1] +" "+ infoEmpleado[2] + " " +infoEmpleado[3];
                 }
                 else{
                 empleadoActualizado = "";
