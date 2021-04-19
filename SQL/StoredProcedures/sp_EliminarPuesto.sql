@@ -4,7 +4,7 @@ SET QUOTED_IDENTIFIER ON
 GO
 
 CREATE PROCEDURE dbo.sp_EliminarPuesto
-	@inNombre VARCHAR(40)
+	@inBuscarId INT
 --Devuelve la lista de todos los usuarios ordenados alfabéticamente
 AS
 BEGIN
@@ -22,7 +22,7 @@ BEGIN
 	SET 
 		activo = 0
 	WHERE 
-		Nombre = @inNombre
+		id = @inBuscarId
 
 	SET NOCOUNT OFF;
 

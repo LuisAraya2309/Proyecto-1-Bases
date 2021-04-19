@@ -29,6 +29,7 @@ BEGIN
 	WHERE 
 		E.Nombre LIKE @inFiltro
 		AND E.activo = 1
+		And P.activo = 1
 	ORDER BY E.Nombre;
 
 	SET NOCOUNT OFF;

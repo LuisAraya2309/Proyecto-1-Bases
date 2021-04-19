@@ -27,6 +27,7 @@ BEGIN
 	INNER JOIN dbo.Departamento AS D ON  E.idDepartamento = D.id
 	WHERE 
 		E.activo = 1
+		AND P.activo = 1
 	ORDER BY E.Nombre;
 
 	SET NOCOUNT OFF;
