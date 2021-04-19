@@ -25,7 +25,6 @@
             String fechaNacimiento = request.getParameter("fechaNacimiento");
             String puesto = request.getParameter("puesto");
             String departamento = request.getParameter("departamento");
-            int saldoVacaciones = Integer.parseInt(request.getParameter("saldoVacaciones"));
             if(!validacionesSQL.existeEmpleado(nuevoNombre)&& nuevoNombre.length()<40){
                 if(validacionesSQL.validarFecha(fechaNacimiento)){
                     try{ 
@@ -39,7 +38,6 @@
                             ps.setString(4, fechaNacimiento);
                             ps.setString(5,puesto);
                             ps.setString(6, departamento);
-                            ps.setInt(7, saldoVacaciones);
                             ps.executeQuery();
                         }catch(SQLException ex){
                             System.out.println(ex);

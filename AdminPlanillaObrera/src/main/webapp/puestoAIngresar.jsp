@@ -1,8 +1,3 @@
-<%-- 
-    Document   : puestoAIngresar
-    Created on : 5 abr. 2021, 15:27:59
-    Author     : luist
---%>
 
 <%@page import="java.sql.SQLException"%>
 <%@page import="java.sql.PreparedStatement"%>
@@ -19,16 +14,18 @@
     </head>
     <body>
         <%
+            int id = Integer.parseInt(request.getParameter("nuevoId"));
             String nuevoNombre = request.getParameter("nuevoNombre");
             int nuevoSalario = Integer.parseInt((request.getParameter("nuevoSalario")));
-            if((nuevoNombre.length()<40)&&(!validacionesSQL.existePuesto(nuevoNombre))){
+            if((nuevoNombre.length()<40)&&(!validacionesSQL.existePuesto(nuevoNombre))&&(!validacionesSQL.existePuestoID(id+""))){
                 try{ 
                     conexionBD conection = new conexionBD();
                     Connection conexion = conection.getConexion();
-                    String callSP = "EXECUTE sp_InsertarPuesto ?,?";
+                    String callSP = "EXECUTE sp_InsertarPuesto ?,?,?";
                     PreparedStatement ps = conexion.prepareStatement(callSP);
-                    ps.setString(1,nuevoNombre);
-                    ps.setInt(2,nuevoSalario);
+                    ps.setInt(1,id);
+                    ps.setString(2,nuevoNombre);
+                    ps.setInt(3,nuevoSalario);
                     ps.executeQuery();
                 }catch(SQLException ex){
                     System.out.println(ex);

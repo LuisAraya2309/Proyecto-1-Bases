@@ -20,6 +20,7 @@
                 }
             %>
             Puesto a editar: <input type="text" name="puestoEditar" value="<%= puestoActualizado%>" required="">
+            Nuevo Id: <input type="text" name="nuevoId" required=""> 
             Nuevo nombre: <input type="text" name="nuevoNombre" required=""> 
             Nuevo salario: <input type="text" name="nuevoSalario" required=""> 
             <input type="submit" name="editar" id="editar" value="Editar">

@@ -18,7 +18,8 @@
             String puestoAEditar = request.getParameter("puestoEditar");
             String nuevoNombre = request.getParameter("nuevoNombre");
             int nuevoSalario = Integer.parseInt((request.getParameter("nuevoSalario")));
-            if((nuevoNombre.length()<40)&&(validacionesSQL.existePuesto(puestoAEditar))&&(!validacionesSQL.existePuesto(nuevoNombre))){
+            int id = Integer.parseInt(request.getParameter("nuevoId"));
+            if((nuevoNombre.length()<40)&&(validacionesSQL.existePuesto(puestoAEditar))&&(!validacionesSQL.existePuesto(nuevoNombre))&&(!validacionesSQL.existePuestoID(id+""))){
                 try{ 
                     conexionBD conection = new conexionBD();
                     Connection conexion = conection.getConexion();

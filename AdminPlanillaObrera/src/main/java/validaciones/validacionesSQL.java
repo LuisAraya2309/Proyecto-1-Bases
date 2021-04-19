@@ -34,20 +34,20 @@ public class validacionesSQL {
                return false;
             } 
 }
-    public static boolean existeEmpleado(String empleado){
-        try{ 
+ public static boolean existePuestoID(String id){
+            try{ 
 
                 conexionBD conection = new conexionBD();
                 Connection conexion = conection.getConexion();
-                String callSP = "EXECUTE sp_ListarEmpleados";
+                String callSP = "EXECUTE sp_ListarPuestos";
                 PreparedStatement ps = conexion.prepareStatement(callSP);
                 ResultSet dataset = ps.executeQuery();
-                List<String> empleadosConvertidos = new ArrayList<>();
+                List<String> puestosConvertidos = new ArrayList<>();
                 while(dataset.next()){
-                   empleadosConvertidos.add(dataset.getString("Nombre"));
+                   puestosConvertidos.add(dataset.getString("id"));
                 }
-                for(int i=0;i<empleadosConvertidos.size();i++){
-                    if(empleado.equals(empleadosConvertidos.get(i))){
+                for(int i=0;i<puestosConvertidos.size();i++){
+                    if(id.equals(puestosConvertidos.get(i))){
                         return true;
                     }
                 }
@@ -56,6 +56,29 @@ public class validacionesSQL {
             }catch(SQLException ex){
                return false;
             } 
+}
+    public static boolean existeEmpleado(String empleado){
+            try{ 
+
+                    conexionBD conection = new conexionBD();
+                    Connection conexion = conection.getConexion();
+                    String callSP = "EXECUTE sp_ListarEmpleados";
+                    PreparedStatement ps = conexion.prepareStatement(callSP);
+                    ResultSet dataset = ps.executeQuery();
+                    List<String> empleadosConvertidos = new ArrayList<>();
+                    while(dataset.next()){
+                       empleadosConvertidos.add(dataset.getString("Nombre"));
+                    }
+                    for(int i=0;i<empleadosConvertidos.size();i++){
+                        if(empleado.equals(empleadosConvertidos.get(i))){
+                            return true;
+                        }
+                    }
+                    return false;
+
+                }catch(SQLException ex){
+                   return false;
+                } 
     }
     
     public static boolean validarFecha(String fecha){

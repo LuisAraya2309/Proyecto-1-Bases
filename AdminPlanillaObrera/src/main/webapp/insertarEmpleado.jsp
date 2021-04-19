@@ -93,8 +93,8 @@
             } 
             %>
            </select>
-            Saldo de Vacaciones: <input type="text" name="saldoVacaciones" required="">
            <input type="submit" name="insertar" id="insertar" value="Insertar">
         </form>
+           <a href='central.html'>Regresar a la central</a>
     </body>
 </html>

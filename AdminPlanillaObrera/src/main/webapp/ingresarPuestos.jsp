@@ -9,6 +9,7 @@
     </head>
     <body>
         <form action="puestoAIngresar.jsp">
+            Nuevo Id: <input type="text" name="nuevoId" required=""> 
             Nuevo nombre: <input type="text" name="nuevoNombre" required=""> 
             Nuevo salario: <input type="text" name="nuevoSalario" required=""> 
             <input type="submit" name="ingresar" id="ingresar" value="Ingresar">
