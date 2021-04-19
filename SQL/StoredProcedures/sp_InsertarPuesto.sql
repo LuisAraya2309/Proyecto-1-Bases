@@ -6,7 +6,8 @@ GO
 
 
 CREATE PROCEDURE dbo.sp_InsertarPuesto 
-	@inNuevoNombre VARCHAR(40)
+	@inNuevoId INT
+	, @inNuevoNombre VARCHAR(40)
 	, @inNuevoSalario INT
 
 AS
@@ -26,9 +27,10 @@ BEGIN
 
 	INSERT INTO dbo.Puesto
 	VALUES
-		(@inNuevoNombre
-		,@inNuevoSalario
-		,1)
+		(@inNuevoId
+		, @inNuevoNombre
+		, @inNuevoSalario
+		, 1)
 
 	SET NOCOUNT OFF;
 

@@ -5,7 +5,8 @@ SET QUOTED_IDENTIFIER ON
 GO
 
 CREATE PROCEDURE dbo.sp_EditarPuesto 
-	@inBuscarNombre VARCHAR(40)
+	@inNuevoId INT
+	, @inBuscarNombre VARCHAR(40)
 	, @inNuevoNombre VARCHAR(40)
 	, @inNuevoSalario INT
 
@@ -29,7 +30,8 @@ BEGIN
 
 	UPDATE dbo.Puesto
 	SET 
-		Nombre = @inNuevoNombre
+		id = @inNuevoId
+		, Nombre = @inNuevoNombre
 		, SalarioXHora = @inNuevoSalario
 	WHERE 
 		Nombre = @inBuscarNombre
