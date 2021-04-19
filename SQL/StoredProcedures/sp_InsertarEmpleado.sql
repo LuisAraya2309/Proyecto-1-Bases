@@ -12,7 +12,6 @@ CREATE PROCEDURE dbo.sp_InsertarEmpleado
 	, @inNuevoFechaNacimiento VARCHAR(40)
 	, @inBuscarPuesto VARCHAR(40)
 	, @inBuscarDepartamento  VARCHAR(40)
-	, @inNuevoSaldoVacaciones INT
 
 AS
 
@@ -26,7 +25,6 @@ BEGIN
 		--, @inNuevoFechaNacimiento VARCHAR(40) = 1988-12-29
 		--, @inBuscarPuesto VARCHAR(40) = gerente
 		--, @inBuscarDepartamento  VARCHAR(40) = laboratorio
-		--, @inNuevoSaldoVacaciones INT = 5000
 
     --EXEC dbo.sp_InsertarEmpleado 
 		--@inNuevoNombre 
@@ -71,7 +69,6 @@ BEGIN
 	, @inNuevoNombre
 	, @inNuevoFechaNacimiento
 	, @inNuevoValorIdentidad
-	, @inNuevoSaldoVacaciones
 	, 1)
 
 	SET NOCOUNT OFF;
